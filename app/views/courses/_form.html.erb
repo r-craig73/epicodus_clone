@@ -1,0 +1,7 @@
+<%= render "layouts/errors", :object => @course %>
+
+<%= form_for @course do |f| %>
+  <%= f.label :language %>
+  <%= f.text_field :language %>
+  <%= f.submit %>
+<% end %>
