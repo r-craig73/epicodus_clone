@@ -1,9 +1,9 @@
 class SectionsController < ApplicationController
-  def index
-    @course = Course.find(params[:course_id])
-    @sections = @course.sections.all
-    render :index
-  end
+  # def index
+  #   @course = Course.find(params[:course_id])
+  #   @sections = @course.sections.all
+  #   render :show
+  # end
 
   def show
     @course = Course.find(params[:course_id])

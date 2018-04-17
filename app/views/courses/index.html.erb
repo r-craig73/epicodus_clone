@@ -4,10 +4,8 @@
 
 <ul>
   <% @courses.each do |course| %>
-    <p>Edit/delete path</p>
+
     <li><%= link_to course.language, course_path(course) %></li>
-    <p>section path</p>
-    <li><%= link_to course.language, course_sections_path(course) %></li>
 
   <% end %>
 </ul>

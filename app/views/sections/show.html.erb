@@ -2,22 +2,18 @@
 
 
 <% if @section.lessons.any? %>
-  <h4>Here are the lessons for this section:</h4>
-
-  <ul>
-    <% @section.lessons.each do |lesson| %>
-      <li>
-        <%= lesson.name %> | Content: <%= lesson.content %> |
-        <%= link_to "Edit", edit_section_lesson_path(@section, lesson) %> |
-        <%= link_to "Delete", section_lesson_path(@section, lesson),
-                                 :data => {:confirm => "Are you sure?",
-                                                :method => "delete"} %>
-      </li>
-    <% end %>
-  </ul>
+  <% @section.lessons.each do |lesson| %>
+    <h4><%= link_to lesson.name, section_lesson_path(@section, lesson) %></h4>
+  <% end %>
 <% else %>
-  <p>There are no lessons yet!</p>
+  <h4>This section has no lessons.</h4>
 <% end %>
+
+
+<hr>
+<%= link_to "Edit Section", edit_course_section_path(@course, @section) %>
+<%= link_to "Delete Section", course_section_path(@course, @section), :data => {:confirm => "Are You Sure?", :method => "delete"} %>
+<%= link_to "Return to Course", course_path(@course) %>
 
 <p><%= link_to "Add a lesson", new_section_lesson_path(@section) %></p>
 
@@ -29,3 +25,18 @@
                                    :method => "delete"} %></p>
 
 <p><%= link_to "Return to sections", sections_path %></p>
+
+
+
+<!-- <h1>Sections</h1>
+
+<ul>
+  <% @sections.each do |section| %>
+     <li><%= section.title %></li>
+     <% section.lessons.each do |lesson| %>
+       <%= lesson.name %>
+     <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "New Section", new_course_section_path %> -->
