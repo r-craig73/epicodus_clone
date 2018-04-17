@@ -1,29 +1,44 @@
 class SectionsController < ApplicationController
   def index
-    @sections = Section.all
+    @course = Course.find(params[:course_id])
+    @sections = @course.sections.all
     render :index
   end
 
   def show
-    @section = Section.find(params[:id])
+    @course = Course.find(params[:course_id])
+    @section = @section.find(params[:id])
     render :show
   end
 
   def new
-    @section = Section.new
+    @course = Course.find(params[:course_id])
+    @section = @course.sections.new
+    # @section = Section.new
     render :new
   end
 
+  # def create
+  #   @section = Section.new(section_params)
+  #   if @section.save
+  #     redirect_to sections_path
+  #   else
+  #     render :new
+  #   end
+  # end
+
   def create
-    @section = Section.new(section_params)
+    @course = Course.find(params[:course_id])
+    @section = @course.sections.new(section_params)
     if @section.save
-      redirect_to sections_path
+      redirect_to course_path(@section.course)
     else
       render :new
     end
   end
 
   def edit
+    @course = Course.find(params[:course_id])
     @section = Section.find(params[:id])
     render :edit
   end

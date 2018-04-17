@@ -1,0 +1,9 @@
+<h1>Lessons</h1>
+
+<ul>
+  <% @lessons.each do |lesson| %>
+     <li><%= link_to lesson.name, course_section_lessons_path %></li>
+  <% end %>
+</ul>
+
+<%= link_to "New Lesson", new_course_section_lesson_path %>

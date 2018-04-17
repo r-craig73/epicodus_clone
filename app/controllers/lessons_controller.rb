@@ -1,4 +1,16 @@
 class LessonsController < ApplicationController
+  def index
+    @lesson = Lesson.all
+    @section = Section.find(params[:section_id])
+    render :index
+  end
+
+  def show
+    @section = Section.find(params[:section_id])
+    @lesson = @lesson.find(params[:id])
+    render :show
+  end
+
   def new
     @section = Section.find(params[:section_id])
     @lesson = @section.lessons.new

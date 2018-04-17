@@ -43,6 +43,8 @@ group :development, :test do
   gem 'launchy'
   gem 'pry'
   gem 'shoulda-matchers'
+  gem 'bootstrap-sass'
+  gem 'jquery-rails'
 end
 
 group :development do
